@@ -1,9 +1,8 @@
 // Constants
-const TEMPLATE_DOC_ID = "1ZM4UQq8ayT1Zyxq3_Ns8mw89P-oVGuo7XZiX3ZbGeJM";
-const SIGNATURE_TEMPLATE_DOC_ID =
-  "1ry6GTSd8qNDMolxCyn_f9DniXnhDN3gWAYR0nwFl7xQ";
-const REPORT_FOLDER_ID = "19r23CO8xVQ50cl7KxT0cnir9ebedilKT";
-const REPORT_TEMPLATE_ID = "1N_kiEdMubYED3JhIHgx3iheHrOsW1-WRzeQirS03S0k";
+const TEMPLATE_DOC_ID = "id for the template document";
+const SIGNATURE_TEMPLATE_DOC_ID = "id for the template document";
+const REPORT_FOLDER_ID = "id for the template document";
+const REPORT_TEMPLATE_ID = "id for the template document";
 
 // Custom menu creation
 function onOpen() {
