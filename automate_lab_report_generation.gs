@@ -1,3 +1,7 @@
+/* This is a trial script i wrote just to test the possibilities of report generation using google apps script. */
+/* The script is not complete and the functions are not fully implemented.
+so this file is not needed for the script to work*/
+
 // Constants
 const TEMPLATE_DOC_ID = "id for the template document";
 const SIGNATURE_TEMPLATE_DOC_ID = "id for the template document";

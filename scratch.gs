@@ -1,3 +1,5 @@
+/* This file just contains some functions that i tried and experimented with. */
+
 // function onOpen() {
 //   SpreadsheetApp.getUi()
 //       .createMenu('Custom Menu')
