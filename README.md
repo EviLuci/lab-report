@@ -1,6 +1,8 @@
 # Lab Report Automation Using Google Apps Script
 This project automates the generation of lab reports from Form submissions into a Google Sheet. Leveraging Google Apps Script, it processes form data, organizes tests by department, and formats test results into a structured report in Google Docs. The script dynamically adjusts report layout and prevents page breaks within individual test tables, creating a professional and organized output.
 
+[*Note: This is a simple automation project which was created for a temporary solution purpose only until a complete Lab Report Management System is created. It just gets the job done somehow <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Nerd%20Face.png" alt="Nerd Face" width="15" height="15" />*]
+
 ## Project Overview
 This script project is designed to streamline the process of generating lab reports. Once a lab technician submits test data via a Form, the responses populate a Google Sheet. The Apps Script then:
 
@@ -9,8 +11,9 @@ This script project is designed to streamline the process of generating lab repo
 - Ensures page breaks only occur between departments, not within tables, maintaining a clean layout for easy readability.
 - Creates a doc and pdf file with header and without header into separate folder
 
-*templates*: The templates folder contains the docs with the table templates created and used for the report generation
-*testing*: The testing folder only contains some test and scratch function and logic I came up with trying out some new features and improvements for the Lab Report Automation. This folder is just for my reference and don't have any useful scripts that are needed for Lab Report Automation.
+**Folders**
+1. *templates*: The templates folder contains the docs with the table templates created and used for the report generation
+2. *testing*: The testing folder only contains some test and scratch function and logic I came up with trying out some new features and improvements for the Lab Report Automation. This folder is just for my reference and don't have any useful scripts that are needed for Lab Report Automation.
 
 ## Known Issues
 - Limited Page Break Control: Google Docs API has limitations in managing exact positioning, which may cause minor layout inconsistencies.
