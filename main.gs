@@ -30,8 +30,8 @@ function createReportWithHeaderAndFooter(formData, patientFolder) {
 
   const body = doc.getBody();
 
-  replacePlaceholdersInHeader(doc, formData);
-  processTableInsertion(body, formData);
+  replacePlaceholdersInHeader(doc, formData); // Replace placeholders in header
+  processTableInsertion(body, formData); // Insert tables
 
   // appendSignatureTable(doc, 0, formData[9]);
 
@@ -66,8 +66,8 @@ function createReportWithoutHeaderAndFooter(formData, patientFolder) {
 
   const body = doc.getBody();
 
-  replacePlaceholdersInHeader(doc, formData);
-  processTableInsertion(body, formData);
+  replacePlaceholdersInHeader(doc, formData); // Replace placeholders in header
+  processTableInsertion(body, formData); // Insert tables
 
   // appendSignatureTable(doc, 0, formData[9]);
 

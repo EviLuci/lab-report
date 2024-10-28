@@ -6,10 +6,14 @@ This project automates the generation of lab reports from Form submissions into 
 ## Project Overview
 This script project is designed to streamline the process of generating lab reports. Once a lab technician submits test data via a Form, the responses populate a Google Sheet. The Apps Script then:
 
-- Categorizes the tests by department.
-- Formats the report with department-specific tables.
-- Ensures page breaks only occur between departments, not within tables, maintaining a clean layout for easy readability.
-- Creates a doc and pdf file with header and without header into separate folder
+1. Detects the Change in google sheet and triggers the scritp to run after checking if the detected change is acutally a new data row appended or not. [*Every Form submission appends a new row and it prevents running the script from manual data manipulation and only runs the full script after verifying if new row was appended or not*]
+2. Creates folders with patient name inside the specified folder with REPORT_FOLDER_ID
+3. Make a copy of doc with REPORT_TEMPLATE_ID and replace placeholders (*datas enclosed by << and >> inside the templates*) in Header and similarly begin table insertion.
+4. Categorizes the tests by department and insert tables so that tests that comes under same department are inserted.
+5. After each table insertion, it checks if there is available space to adjust another test table without breaking the table into two pages. If there is enough space available for test of the same department to be inserted, the table is inserted. Otherwise, a page break is inserted.
+6. Formats the report with department-specific tables.
+7. Ensures page breaks only occur between departments, not within tables, maintaining a clean layout for easy readability.
+8. Creates a doc and pdf file with header and without header into separate folder
 
 **Folders**
 1. *templates*: The templates folder contains the docs with the table templates created and used for the report generation
