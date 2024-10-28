@@ -53,3 +53,15 @@ function generateLabNumber() {
   // Logger.log(reportNumber);
   return labNumber;
 }
+
+// Function to check if there’s enough space for a table on the current page
+function hasEnoughSpace(body, estimatedHeight) {
+  const contentHeight = body.getText().length * 0.7; // Estimate current content height
+  const remainingHeight = PAGE_HEIGHT - (contentHeight % PAGE_HEIGHT); // Approximation
+  return remainingHeight >= estimatedHeight;
+}
+
+// Function to calculate table height based on row count
+function calculateTableHeight(rowCount) {
+  return rowCount * ROW_HEIGHT;
+}

@@ -1,10 +1,14 @@
-// Constants
+// IDs
 const TEMPLATE_DOC_ID = "id for the template document";
 const SIGNATURE_TEMPLATE_DOC_ID = "id for the template document";
 const REPORT_FOLDER_ID = "id for the template document";
 const REPORT_TEMPLATE_ID = "id for the template document";
 const REPORT_TEMPLATE_WITHOUT_HF_ID = "id for the template document";
 const COMMENT_TEMPLATE_ID = "id for the template document";
+
+// Estimated page height of the doc and row height of the table
+const ROW_HEIGHT = 17;
+const PAGE_HEIGHT = 792;
 
 // Custom menu creation
 function onOpen() {
@@ -27,7 +31,7 @@ function createReportWithHeaderAndFooter(formData, patientFolder) {
   const body = doc.getBody();
 
   replacePlaceholdersInHeader(doc, formData);
-  processTableInsertion(doc, formData);
+  processTableInsertion(body, formData);
 
   // appendSignatureTable(doc, 0, formData[9]);
 
@@ -63,7 +67,7 @@ function createReportWithoutHeaderAndFooter(formData, patientFolder) {
   const body = doc.getBody();
 
   replacePlaceholdersInHeader(doc, formData);
-  processTableInsertion(doc, formData);
+  processTableInsertion(body, formData);
 
   // appendSignatureTable(doc, 0, formData[9]);
 

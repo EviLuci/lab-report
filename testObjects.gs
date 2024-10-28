@@ -29,7 +29,7 @@ function replacePlaceholdersInHeader(doc, formData) {
 function getLabTests(formData) {
   return {
     Hematology: {
-      department: HEMATOLOGY,
+      department: "HEMATOLOGY",
       tableHeading: "HEMATOLOGY - CBC",
       templateTableIndex: 0,
       tests: [
@@ -49,7 +49,7 @@ function getLabTests(formData) {
       ],
     },
     Lipid_Profile: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "BIO-CHEMISTRY - LIPID PROFILE",
       templateTableIndex: 1,
       tests: [
@@ -62,7 +62,7 @@ function getLabTests(formData) {
       ],
     },
     LFT: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "BIO-CHEMISTRY - LIVER FUNCTION TEST",
       templateTableIndex: 2,
       tests: [
@@ -78,7 +78,7 @@ function getLabTests(formData) {
       ],
     },
     RFT: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "BIO-CHEMISTRY - RENAL FUNCTION TEST",
       templateTableIndex: 3,
       tests: [
@@ -89,7 +89,7 @@ function getLabTests(formData) {
       ],
     },
     Stool_RE: {
-      department: PARASITOLOGY,
+      department: "PARASITOLOGY",
       tableHeading: "PARASITOLOGY - STOOL ROUTINE EXAMINATION",
       templateTableIndex: 4,
       tests: [
@@ -109,7 +109,7 @@ function getLabTests(formData) {
       ],
     },
     Urine_RE: {
-      department: PARASITOLOGY,
+      department: "PARASITOLOGY",
       tableHeading: "PARASITOLOGY - URINE ROUTINE EXAMINATION",
       templateTableIndex: 5,
       tests: [
@@ -130,13 +130,13 @@ function getLabTests(formData) {
       ],
     },
     Urine_Culture: {
-      department: MICROBIOLOGY,
+      department: "MICROBIOLOGY",
       tableHeading: "MICROBIOLOGY - URINE CULTURE",
       templateTableIndex: 6,
       tests: [{ placeholder: "<<Result>>", result: formData[75] }],
     },
     Thyroid_Function: {
-      department: IMMUNOLOGY,
+      department: "IMMUNOLOGY",
       tableHeading: "IMMUNOLOGY - THYROID FUNCTION TEST",
       templateTableIndex: 7,
       commentTableIndex: 1,
@@ -147,7 +147,7 @@ function getLabTests(formData) {
       ],
     },
     Iron_Profile: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "BIO-CHEMISTRY - IRON PROFILE",
       templateTableIndex: 8,
       tests: [
@@ -158,7 +158,7 @@ function getLabTests(formData) {
       ],
     },
     Dengue: {
-      department: SEROLOGY,
+      department: "SEROLOGY",
       tableHeading: "DENGUE COMBO SEROLOGY SCREEN",
       templateTableIndex: 9,
       tests: [
@@ -168,27 +168,27 @@ function getLabTests(formData) {
       ],
     },
     URIC_ACID: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "BIO-CHEMISTRY - URIC ACID",
       templateTableIndex: 10,
       tests: [{ placeholder: "<<Uric Acid>>", result: formData[87] }],
     },
     Vitamin_D3: {
-      department: IMMUNOLOGY,
+      department: "IMMUNOLOGY",
       tableHeading: "IMMUNOLOGY - VITAMIN D3",
       templateTableIndex: 11,
       commentTableIndex: 4,
       tests: [{ placeholder: "<<VD>>", result: formData[85] }],
     },
     Vitamin_B12: {
-      department: IMMUNOLOGY,
+      department: "IMMUNOLOGY",
       tableHeading: "IMMUNOLOGY - VITAMIN B12",
       templateTableIndex: 12,
       commentTableIndex: 5,
       tests: [{ placeholder: "<<VB>>", result: formData[84] }],
     },
     Blood_Sugar: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "BIO-CHEMISTRY - BLOOD SUGAR",
       templateTableIndex: 13,
       tests: [
@@ -198,27 +198,27 @@ function getLabTests(formData) {
       ],
     },
     Calcium: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "BIO-CHEMISTRY - CALCIUM",
       templateTableIndex: 14,
       tests: [{ placeholder: "<<Calcium>>", result: formData[80] }],
     },
     HbA1c: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "BIO-CHEMISTRY - HbA1c",
       templateTableIndex: 15,
       commentTableIndex: 7,
       tests: [{ placeholder: "<<HbA1c>>", result: formData[86] }],
     },
     TSH: {
-      department: IMMUNOLOGY,
+      department: "IMMUNOLOGY",
       tableHeading: "IMMUNOLOGY - TSH",
       templateTableIndex: 16,
       commentTableIndex: 6,
       tests: [{ placeholder: "<<TSH>>", result: formData[90] }],
     },
     SPOT: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "SPOT A:C",
       templateTableIndex: 17,
       tests: [
@@ -228,26 +228,26 @@ function getLabTests(formData) {
       ],
     },
     OBT: {
-      department: MICROBIOLOGY,
+      department: "MICROBIOLOGY",
       tableHeading: "MICROBIOLOGY - STOOL OCCULT BLOOD",
       templateTableIndex: 18,
       tests: [{ placeholder: "<<OBT>>", result: formData[94] }],
     },
     IPTH: {
-      department: IMMUNOLOGY,
+      department: "IMMUNOLOGY",
       tableHeading: "INTACT PARATHYROID HORMONE",
       templateTableIndex: 19,
       commentTableIndex: 8,
       tests: [{ placeholder: "<<IPTH>>", result: formData[95] }],
     },
     Amylase: {
-      department: BIO - CHEMISTRY,
+      department: "BIO-CHEMISTRY",
       tableHeading: "BIO-CHEMISTRY - SERUM AMYLASE",
       templateTableIndex: 20,
       tests: [{ placeholder: "<<Amylase>>", result: formData[97] }],
     },
     Serology: {
-      department: SEROLOGY,
+      department: "SEROLOGY",
       tableHeading: "SEROLOGY",
       templateTableIndex: 21,
       commentTableIndex: 9,
@@ -260,40 +260,40 @@ function getLabTests(formData) {
       ],
     },
     VDRL: {
-      department: SEROLOGY,
+      department: "SEROLOGY",
       tableHeading: "SEROLOGY - VDRL",
-      templateTableIndex: 21,
+      templateTableIndex: 23,
       commentTableIndex: 9,
       tests: [{ placeholder: "<<VDRL>>", result: formData[104] }],
     },
     HIV: {
-      department: SEROLOGY,
+      department: "SEROLOGY",
       tableHeading: "SEROLOGY - HIV",
-      templateTableIndex: 22,
+      templateTableIndex: 24,
       tests: [{ placeholder: "<<HIV>>", result: formData[103] }],
     },
     HCV: {
-      department: SEROLOGY,
+      department: "SEROLOGY",
       tableHeading: "SEROLOGY - HCV",
-      templateTableIndex: 23,
+      templateTableIndex: 25,
       tests: [{ placeholder: "<<HCV>>", result: formData[102] }],
     },
     HBsAg: {
-      department: SEROLOGY,
+      department: "SEROLOGY",
       tableHeading: "SEROLOGY - HBsAg",
-      templateTableIndex: 24,
+      templateTableIndex: 26,
       tests: [{ placeholder: "<<HBsAg>>", result: formData[101] }],
     },
     TPHA: {
-      department: SEROLOGY,
+      department: "SEROLOGY",
       tableHeading: "SEROLOGY - TPHA",
-      templateTableIndex: 25,
+      templateTableIndex: 27,
       tests: [{ placeholder: "<<TPHA>>", result: formData[100] }],
     },
     UPT: {
-      department: SEROLOGY,
+      department: "SEROLOGY",
       tableHeading: "SEROLOGY - UPT",
-      templateTableIndex: 26,
+      templateTableIndex: 22,
       tests: [{ placeholder: "<<UPT>>", result: formData[99] }],
     },
     // ... other test types ...
