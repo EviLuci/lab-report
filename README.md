@@ -13,7 +13,7 @@ This script project is designed to streamline the process of generating lab repo
 5. After each table insertion, it checks if there is available space to adjust another test table without breaking the table into two pages. If there is enough space available for test of the same department to be inserted, the table is inserted. Otherwise, a page break is inserted.
 6. Formats the report with department-specific tables.
 7. Ensures page breaks only occur between departments, not within tables, maintaining a clean layout for easy readability.
-8. Replace the placeholders with formData as mapped inside tesObjects.gs
+8. Replace the placeholders with formData as mapped inside testObjects.gs
 9. Insert signature. [*signature are formated as a table without border*]
 10. Creates a doc and pdf file with header. Similarly, the doc and pdf file without header is as well created and saved in 2 separate folders.
 11. Sends the files and link to the folder as an mail in the gmail specified.
