@@ -21,6 +21,7 @@ function processTableInsertion(body, formData) {
   const labTests = getLabTests(formData);
   const departmentTests = {};
 
+  // Categorize tests by department
   selectedTests.forEach((selectedTest) => {
     const labTest = labTests[selectedTest];
     if (labTest) {
@@ -33,45 +34,114 @@ function processTableInsertion(body, formData) {
     }
   });
 
-  // Insert tables by department
+  // Process each department
   const departments = Object.keys(departmentTests);
+  let totalTestsProcessed = 0;
   const totalTests = selectedTests.length;
-  let currentTestCount = 0;
 
-  departments.forEach((department, index) => {
-    const labTestsInDepartment = departmentTests[department];
-
-    // Insert all tests for this department
-    labTestsInDepartment.forEach((labTestInDepartment) => {
-      const rowCount = labTestInDepartment.tests.length + 1; // Include header row
-      const tableHeight = calculateTableHeight(rowCount);
-      const estimatedSpaceNeeded = tableHeight + 120;
-
-      const contentHeight = body.getText().length * 0.7; // Estimate current content height
-      const remainingHeight = PAGE_HEIGHT - (contentHeight % PAGE_HEIGHT); // Approximation
-      Logger.log(
-        contentHeight + "&" + remainingHeight + "&" + estimatedSpaceNeeded
-      );
-      // Check if there’s enough space; insert page break if not
-      if (!hasEnoughSpace(body, estimatedSpaceNeeded)) {
-        Logger.log("space not enough");
-        body.appendPageBreak();
-      }
-      // Logger.log("table inserted")
-      insertTable(body, labTestInDepartment, formData);
-      currentTestCount++; // Increment after each table is inserted
-    });
-
-    // Check if this is the last test
-    const isLastTest = currentTestCount === totalTests;
-
-    // Append signature to the table
-    appendSignatureTable(body, 0, formData[9], isLastTest);
-
-    // Only insert a page break if this is not the last department
-    if (index < departments.length - 1) {
+  departments.forEach((department, deptIndex) => {
+    if (deptIndex > 0) {
+      // Start new department on a new page (except first department)
       body.appendPageBreak();
     }
+    const labTestsInDepartment = departmentTests[department];
+
+    // Sort tests - put tests with comments at the end of their department
+    labTestsInDepartment.sort((a, b) => {
+      if (a.commentTableIndex && !b.commentTableIndex) return 1;
+      if (!a.commentTableIndex && b.commentTableIndex) return -1;
+      return 0;
+    });
+
+    // Process each test in the department
+    labTestsInDepartment.forEach((labTestInDepartment, testIndex) => {
+      const rowCount = labTestInDepartment.tests.length + 1; // Include header row
+      const tableHeight = calculateTableHeight(rowCount);
+      const estimatedSpaceNeeded = tableHeight + 200; // 200 extra space for signature
+
+      // Flag to track if we need to add signature after this test
+      let needsSignature = false;
+
+      // Check if test has comment
+      const hasComment =
+        labTestInDepartment.commentTableIndex &&
+        (formData[76] === "Yes" || formData[76] === "Custom");
+
+      // If test has a comment, append signature and always start on a new page
+      if (hasComment && testIndex > 0) {
+        appendSignatureTable(body, 0, formData[9]); // Add signature before page break
+        Logger.log(
+          "Signature  and pagebreak inserted because the test has comment and is not the first test in the department"
+        );
+        body.appendPageBreak();
+      }
+
+      // Check if there's enough space for the current table
+      if (!hasEnoughSpace(body, estimatedSpaceNeeded)) {
+        appendSignatureTable(body, 0, formData[9]); // Add signature before page break
+        Logger.log(
+          "Signature  and pagebreak inserted because there is not enough space for the table"
+        );
+        body.appendPageBreak();
+      }
+
+      // Check if there’s enough space; insert page break and signature if not
+      // if (!hasEnoughSpace(body, estimatedSpaceNeeded)) {
+      //    Logger.log("Inserted signature due to insufficient space for " + labTestInDepartment.tableHeading);
+      //   appendSignatureTable(body, 0, formData[9]);
+      //   Logger.log("signature after test inserted before page break");
+      //   body.appendPageBreak();
+      // } else if (hasEnoughSpace(body, estimatedSpaceNeeded) && labTestInDepartment.commentTableIndex) {
+      //   if (currentTestCount>0) {
+      //     appendSignatureTable(body, 0, formData[9]);
+      //     Logger.log("has comment so, signature inserted before page break");
+      //     body.appendPageBreak();
+      //   }
+      // }
+
+      insertTable(body, labTestInDepartment, formData);
+      Logger.log(labTestInDepartment.tableHeading + " table inserted");
+      totalTestsProcessed++;
+
+      // Determine if we need to add a signature after this test
+      const isLastTestInDept = testIndex === labTestsInDepartment.length - 1;
+      const isLastDepartment = deptIndex === departments.length - 1;
+      const isLastTest = totalTestsProcessed === totalTests;
+
+      // Add signature if:
+      // 1. This test has a comment
+      // 2. Or this is the last test in its department
+      needsSignature = hasComment || isLastTestInDept;
+
+      if (needsSignature) {
+        // Only append page break if this isn't the last test and we have more content coming
+        const shouldAddPageBreak =
+          !isLastTest && (hasComment || isLastTestInDept);
+
+        appendSignatureTable(body, 0, formData[9], isLastTest);
+        Logger.log(
+          "Signature inserted because this is the last test and has comment, is last test in department or is last department"
+        );
+
+        if (shouldAddPageBreak) {
+          body.appendPageBreak();
+        }
+      }
+    });
+
+    // // Check if this is the last test
+    // const isLastTest = currentTestCount === totalTests;
+    // Logger.log("Is " + department + " last department and test: " + isLastTest);
+
+    // // Append signature to the table
+    // appendSignatureTable(body, 0, formData[9], isLastTest);
+    // Logger.log("signature after department inserted");
+
+    // // Only insert a page break if this is not the last department
+    // if (index < departments.length - 1) {
+    //   body.appendPageBreak();
+    //   Logger.log("page break inserted because it is not the last test");
+    // }
   });
 
   // const selectedTests = JSON.parse(formData[10]);
